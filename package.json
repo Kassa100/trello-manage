@@ -1,0 +1,21 @@
+{
+  "name": "manage-trello",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev" :"ts-node-dev ./src/app.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/koa": "^2.13.3",
+    "@types/node": "^15.12.1",
+    "ts-node-dev": "^1.1.6"
+  },
+  "dependencies": {
+    "koa": "^2.13.1"
+  }
+}
