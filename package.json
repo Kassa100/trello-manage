@@ -5,7 +5,21 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "ts-node-dev ./src/app.ts"
+    "dev": "ts-node-dev ./src/app.ts",
+
+    "db:create":"sequelize db:create",
+    "db:drop":"sequelize db:drop",
+
+    "db:migrate":"sequelize db:migrate",
+    "db:migrate:undo":"sequelize db:migrate:undo",
+    "db:migrate:undo:all":"sequelize db:migrate:undo:all",
+
+    "db:seed:all":"sequelize db:seed:all",
+    "db:seed:undo:all":"sequelize db:seed:undo:all",
+
+    "db:init": "npm run db:create && npm run db:migrate && npm run db:seed:all",
+    "db:redo": "npm run db:drop && npm run db:init"
+    
   },
   "keywords": [],
   "author": "",
@@ -15,6 +29,7 @@
     "@types/koa-bodyparser": "^4.3.1",
     "@types/koa-router": "^7.4.2",
     "@types/node": "^15.12.1",
+    "sequelize-cli": "^6.2.0",
     "ts-node-dev": "^1.1.6",
     "typescript": "^4.3.2"
   },
@@ -24,6 +39,8 @@
     "koa": "^2.13.1",
     "koa-bodyparser": "^4.3.0",
     "koa-router": "^10.0.0",
-    "koa-ts-controllers": "^3.2.2"
+    "koa-ts-controllers": "^3.2.2",
+    "mysql2": "^2.2.5",
+    "sequelize": "^6.6.2"
   }
 }
