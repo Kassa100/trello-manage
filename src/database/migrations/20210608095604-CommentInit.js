@@ -14,6 +14,8 @@ module.exports = {
       userId: {
         // 字段类型：数字
         type: Sequelize.INTEGER,
+        // 值唯一
+        unique: true,
         // 不允许 null 值
         allowNull: false,
       },
@@ -21,6 +23,8 @@ module.exports = {
       boardListCardId: {
         // 字段类型：数字
         type: Sequelize.INTEGER,
+        // 值唯一
+        unique: true,
         // 不允许 null 值
         allowNull: false,
       },

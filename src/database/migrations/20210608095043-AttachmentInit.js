@@ -14,6 +14,8 @@ module.exports = {
       userId: {
         // 字段类型：数字
         type: Sequelize.INTEGER,
+        // 值唯一
+        unique: true,
         // 不允许 null 值
         allowNull: false,
       },
@@ -21,12 +23,16 @@ module.exports = {
       originName: {
         // 字符串类型（20长度）
         type: Sequelize.STRING(255),
+        // 值唯一
+        unique: true,
         // 不允许 null 值
         allowNull: false,
       },
       name: {
         // 字符串类型（20长度）
         type: Sequelize.STRING(255),
+        // 值唯一
+        unique: true,
         // 不允许 null 值
         allowNull: false,
       },
