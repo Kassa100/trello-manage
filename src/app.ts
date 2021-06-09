@@ -6,6 +6,7 @@ import path from "path";
 import KoaBodyParser from 'koa-bodyparser'
 import { Context } from "vm";
 import Boom from '@hapi/boom'
+import { Sequelize } from 'sequelize-typescript';
 
 // 注册路由
 (async () => {
@@ -13,6 +14,15 @@ import Boom from '@hapi/boom'
 
     const router = new KoaRouter();
 
+
+
+    // 链接数据库
+    const db = new Sequelize({
+        ...configs.database,
+        models: [__dirname + '/models/**/*']
+    });
+
+    // 注册路由
     await bootstrapControllers(app, {
         router,
         basePath: '/api',
