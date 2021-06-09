@@ -1,6 +1,8 @@
-import { Body, Controller, Get, Params, Post, Query } from 'koa-ts-controllers';
+import { Body, Controller, Get, Ctx, Params, Post, Query, Flow } from 'koa-ts-controllers';
 import { IsNumberString } from "class-validator"
 import Boom from "@hapi/boom"
+import { Context } from 'koa';
+import authorization from "../middlewares/authorization"
 class GetUsersQuery {
     @IsNumberString()
     page: number;
@@ -36,6 +38,21 @@ class TestController {
     //     console.log(body);
     //     return `当前Body为${JSON.stringify(body)}`;
     // }
+
+    @Get('/auth')
+    @Flow([authorization])
+    async auth(
+        @Ctx() ctx: Context
+    ) {
+        return "不登录看不到"
+    }
+
+    @Get('/unauth')
+    async unauth(
+        @Ctx() ctx: Context
+    ) {
+        return "随便看"
+    }
 }
 
 
