@@ -20,7 +20,6 @@ export class UserController {
         let { name, password } = body;
 
         // 验证数据库中是否已经存在要注册的用户
-
         let user = await UserModel.findOne({
             where: {
                 name
