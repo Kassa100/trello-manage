@@ -14,37 +14,49 @@ const configs = {
     development: {
         server: {
             host: 'localhost',
-            port: 8080,
+            port: 8080
         },
+        database: databaseConfig.development as IDatabaseConfig,
         jwt: {
             privateKey: 'kaikeba'
         },
-        database: databaseConfig.development as IDatabaseConfig,
+        storage: {
+            dir: path.resolve(__dirname, '../attachments'),
+            prefix: '/public/attachments'
+        }
     },
     test: {
         server: {
             host: 'localhost',
-            port: 8080,
+            port: 8080
         },
+        database: databaseConfig.test as IDatabaseConfig,
         jwt: {
             privateKey: 'kaikeba'
         },
-        database: databaseConfig.test as IDatabaseConfig,
+        storage: {
+            dir: path.resolve(__dirname, 'attachments'),
+            prefix: '/public/attachments'
+        }
     },
     production: {
         server: {
             host: 'localhost',
-            port: 8080,
+            port: 8080
         },
+        database: databaseConfig.production as IDatabaseConfig,
         jwt: {
             privateKey: 'kaikeba'
         },
-        database: databaseConfig.production as IDatabaseConfig,
-    },
-}
+        storage: {
+            dir: path.resolve(__dirname, 'attachments'),
+            prefix: '/public/attachments'
+        }
+    }
+};
 
 type configKeys = keyof typeof configs;
 
-const NODE_EVN = process.env.NODE_ENV as configKeys || "development";
+const NODE_EVN = process.env.NODE_ENV as configKeys || 'development';
 
 export default configs[NODE_EVN];

@@ -1,17 +1,36 @@
+import {
+    DefaultScope,
+    Scopes,
+    Table,
+    Column,
+    Model,
+    AutoIncrement,
+    AllowNull,
+    DataType,
+    Unique,
+    PrimaryKey,
+    CreatedAt,
+    UpdatedAt
+} from 'sequelize-typescript';
+import crypto from "crypto";
 
-
-import { Model, Table, Column, AllowNull, Unique, CreatedAt, UpdatedAt, PrimaryKey, DataType, AutoIncrement } from "sequelize-typescript";
-import crypto from "crypto"
-
+// @DefaultScope(() => ({
+//     attributes: ['id', 'name', 'CreatedAt', 'UpdatedAt']
+// }))
+// @Scopes(() => ({
+//     all: {
+//         attributes: ['id', 'name', 'password', 'CreatedAt', 'UpdatedAt']
+//     }
+// }))
 @Table({
-    tableName: 'user'
+    tableName: 'User',
 })
 export class User extends Model<User> {
+
     @PrimaryKey
     @AutoIncrement
     @Column
     id: number;
-
 
     @AllowNull(false)
     @Unique(true)
@@ -19,6 +38,13 @@ export class User extends Model<User> {
         type: DataType.STRING(50)
     })
     name: string;
+
+    // @AllowNull(false)
+    // @Column({
+    //     type: DataType.STRING(32),
+    //     field: 'password'
+    // })
+    // _password: string;
 
     @Column
     set password(val: string) {

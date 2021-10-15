@@ -1,7 +1,8 @@
-// 接口传入数据验证
-
-import { IsNotEmpty, Length } from 'class-validator'
-import { IsSameValue } from './CustomValidationDecorators'
+import {
+    Length,
+    IsNotEmpty
+} from 'class-validator';
+import {IsSameValue} from './CustomValidationDecorators';
 
 class UserBody {
     @Length(1, 50, {
@@ -13,10 +14,11 @@ class UserBody {
         message: '密码不能为空'
     })
     password: string;
-
 }
-export class RegisterBody extends UserBody {
 
+export class RegisterBody extends UserBody{
+
+    // 需要和password比较，必须拥有相同的值，自定义验证装饰器
     @IsSameValue('password', {
         message: '两次输入密码不一致'
     })
@@ -24,5 +26,5 @@ export class RegisterBody extends UserBody {
 
 }
 
-export class LoginBody extends UserBody {
+export class LoginBody extends UserBody{
 }
